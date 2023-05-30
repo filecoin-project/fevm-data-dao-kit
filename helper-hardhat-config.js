@@ -2,7 +2,7 @@ const { ethers } = require("hardhat")
 
 const networkConfig = {
     314159: {
-        name: "CalibNet",
+        name: "Calibration",
     },
     314: {
         name: "FilecoinMainnet",
