@@ -71,7 +71,7 @@ function serializeExtraParamsV1(
   return buf.data();
 }
 
-contract DaoDealClient is Ownable {
+contract DealClient is Ownable {
   using AccountCBOR for *;
   using MarketCBOR for *;
 
@@ -228,8 +228,9 @@ contract DaoDealClient is Ownable {
     DealRequest memory req = getDealRequest(pieceRequests[pieceCid].requestId);
     require(proposal.verified_deal == req.verified_deal, "verified_deal param mismatch");
     (uint256 proposalStoragePricePerEpoch, bool storagePriceConverted) = BigInts.toUint256(proposal.storage_price_per_epoch);
-    (uint256 proposalClientCollateral, bool collateralConverted) = BigInts.toUint256(proposal.storage_price_per_epoch);
-    require(storagePriceConverted && collateralConverted, "Issues converting uint256 to BigInt, may not have accurate values");
+    require(!storagePriceConverted, "Issues converting uint256 to BigInt, may not have accurate values");
+    (uint256 proposalClientCollateral, bool collateralConverted) = BigInts.toUint256(proposal.client_collateral);
+    require(!collateralConverted, "Issues converting uint256 to BigInt, may not have accurate values");
     require(proposalStoragePricePerEpoch <= req.storage_price_per_epoch, "storage price greater than request amount");
     require(proposalClientCollateral <= req.client_collateral, "client collateral greater than request amount");
 
@@ -293,7 +294,7 @@ contract DaoDealClient is Ownable {
   // addBalance funds the builtin storage market actor's escrow
   // with funds from the contract's own balance
   // @value - amount to be added in escrow in attoFIL
-  function addBalance(uint256 value) onlyOwner public {
+  function addBalance(uint256 value) public onlyOwner {
     MarketAPI.addBalance(FilAddresses.fromEthAddress(address(this)), value);
   }
 
