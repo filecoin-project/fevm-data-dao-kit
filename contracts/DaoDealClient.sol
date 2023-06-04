@@ -71,7 +71,7 @@ function serializeExtraParamsV1(
   return buf.data();
 }
 
-contract DealClient is Ownable {
+contract DaoDealClient is Ownable {
   using AccountCBOR for *;
   using MarketCBOR for *;
 
