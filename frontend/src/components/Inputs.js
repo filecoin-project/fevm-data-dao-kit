@@ -49,7 +49,7 @@ function Inputs() {
   };
 
   const handleChangeProposalDescription = (event) => {
-    setCarSize(event.target.value);
+    setProposalDescription(event.target.value);
   };
 
 
@@ -313,28 +313,9 @@ function Inputs() {
         <br />
         <br />
 
-        <div class='child-1-hg'>
-
-        <label>
-          Car Size:
-        </label>
-
-        <div
-          class="tooltip"
-          data-tooltip-id="carsize-tooltip"
-          data-tooltip-delay-hide={50}
-          data-tooltip-html="This is the size of the CAR file in bytes. <br /> You can go to data.fvm.dev and get this by uploading your file (site in development). <br /> This can be accessed as the output of tech-greedy/generate-car."
-        >
-          <AiOutlineQuestionCircle />
-        </div>
-        <Tooltip id="carsize-tooltip" />
-
-
-        </div>
-
         
 
-          <input class="input-elem" type="text" value={carSize} onChange={handleChangeCarSize} />
+       <input class="input-elem" type="text" value={carSize} onChange={handleChangeCarSize} />
 
         <br />
         <br />
@@ -349,7 +330,7 @@ function Inputs() {
           class="tooltip"
           data-tooltip-id="proposal-description-tooltip"
           data-tooltip-delay-hide={50}
-          data-tooltip-html="This is the description of the proposal you are making ot the DAO."
+          data-tooltip-html="This is the description of the proposal you are making to the DAO."
         >
           <AiOutlineQuestionCircle />
         </div>
@@ -360,7 +341,7 @@ function Inputs() {
 
         
 
-          <input class="input-elem" type="text" value={proposalDescription} onChange={handleChangeProposalDescription} />
+       <input class="input-elem" type="text" value={proposalDescription} onChange={handleChangeProposalDescription} />
         <br />
         <br />
         <button
