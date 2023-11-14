@@ -1,2 +1,5 @@
 exports.getAddress = require("./get-address")
 exports.cidToBytes = require("./cid-to-bytes")
+exports.propose = require("./propose")
+exports.vote = require("./vote")
+exports.execute = require("./execute")
