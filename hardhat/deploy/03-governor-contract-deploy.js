@@ -9,11 +9,10 @@ module.exports = async ({ deployments }) => {
     const { deploy, get } = deployments;
 
     const dataGovernanceToken = await get("DataGovernanceToken")
-    const timeLock = await get("TimeLock")
 
     const governorContract = await deploy("GovernorContract", {
         from: wallet.address,
-        args: [dataGovernanceToken.address, timeLock.address, 5, 100, 0],
+        args: [dataGovernanceToken.address],
         log: true,
     });
 }

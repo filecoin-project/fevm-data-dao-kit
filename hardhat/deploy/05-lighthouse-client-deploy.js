@@ -7,19 +7,19 @@ const wallet = new ethers.Wallet(private_key, ethers.provider)
 
 module.exports = async ({ deployments }) => {
     const { deploy, get } = deployments;
-    const timeLock = await get("TimeLock")
 
-    const daoDealClient = await deploy("DaoDealClient", {
+    const lighthouseClient = await deploy("LighthouseClient", {
         from: wallet.address,
         args: [],
         log: true,
     });
 
-    //Transfer Ownership to TimeLock.sol
+    //Transfer Ownership to Governor Contract
     //Comment this out after deploying the first time
-    console.log("Transferring DaoDealClient Owner to TimeLock.sol")
-    const dealDaoClientContract = await ethers.getContractAt("DaoDealClient", daoDealClient.address)
-    const transferOwnerTx = await dealDaoClientContract.transferOwnership(timeLock.address);
+    console.log("Transferring LighthouseClient Owner to Governor Contract")
+    const lighthouseClientContract = await ethers.getContractAt("LighthouseClient", lighthouseClient.address)
+    const governorContract = await get("GovernorContract");
+    const transferOwnerTx = await lighthouseClientContract.transferOwnership(governorContract.address);
     await transferOwnerTx.wait();
     console.log("Ownership transferred");
 }
