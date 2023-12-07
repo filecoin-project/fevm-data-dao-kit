@@ -13,10 +13,10 @@ contract GovernorContract is Governor, GovernorCountingSimple, GovernorVotes {
     }
 
     function votingPeriod() public pure override returns (uint256) {
-        return 10; // 5 minutes
+        return 6; // 3 minutes
     }
 
-    function quorum(uint256 blockNumber) public pure override returns (uint256) {
+    function quorum(uint256) public pure override returns (uint256) {
         return 1e18;
     }
 }

@@ -6,6 +6,5 @@ This is a beta kit to demo how to build a basic Decentralized Autonomous Organiz
 
 Start out in the "hardhat" directory and follow the readme there to begin deploying and interacting with contracts.
 
-Then go to the "frontend" directory to run an example frontend!
 
 
